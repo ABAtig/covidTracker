@@ -1,0 +1,68 @@
+{
+  "name": "VaccinationInfo",
+  "fields": [
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID",
+      "javadoc": "UUID of vaccinated person",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "Name of case",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "birthday",
+      "fieldType": "LocalDate",
+      "javadoc": "Date of birthday of vaccinated person"
+    },
+    {
+      "fieldName": "identityCardNumber",
+      "fieldType": "String",
+      "javadoc": "Identity carte number of vaccinated person"
+    },
+    {
+      "fieldName": "vaccinationNumber",
+      "fieldType": "EnumVaccinationNumber",
+      "javadoc": "number of vaccination of vaccinated person",
+      "fieldValues": "FIRST,SECOND",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstVaccinationDate",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "Date of first vaccination",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "secondVaccinationDate",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "Date of second vaccination"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "EnumCountry",
+      "javadoc": "Country of vaccinated person",
+      "fieldValues": "TUNISIA,ALGERIA,EGYPT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adress",
+      "fieldType": "String",
+      "javadoc": "Adress of vaccinated person"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "vaccination_info",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["CovidTracker"],
+  "changelogDate": "20220120184000"
+}

@@ -1,0 +1,118 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType session
+    baseName CovidTracker
+    blueprints []
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angularX
+    clientPackageManager npm
+    clientTheme none
+    creationTimestamp 1638527659214
+    databaseType sql
+    devDatabaseType h2Memory
+    dtoSuffix DTO
+    enableHibernateCache false
+    enableSwaggerCodegen false
+    enableTranslation false
+    jhiPrefix jhi
+    jhipsterVersion "7.4.0"
+    languages [en, fr]
+    messageBroker false
+    nativeLanguage en
+    otherModules []
+    packageName com.covidtracker.myapp
+    prodDatabaseType postgresql
+    reactive false
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType no
+    skipClient true
+    skipUserManagement false
+    testFrameworks []
+    websocket false
+  }
+    entities *
+}
+
+enum EnumCountry {
+ TUNISIA,
+ ALGERIA,
+ EGYPT
+}
+
+enum EnumTestResult {
+ POSITIVE,
+ NEGATIVE
+}
+
+enum EnumVaccinationNumber {
+ FIRST,
+ SECOND
+}
+
+entity CaseInfo {
+	/** UUID of positive case of covid  */
+	uuid UUID required unique,
+    /** Name of case */
+    name String required,
+    /** Date of birthday of case */
+	birthday LocalDate,
+	/** Result of test of covid */
+	testResult EnumTestResult required,
+	/** Date of test of covid */
+	testDate ZonedDateTime,
+    /** Country of covid case */
+	country EnumCountry required,
+    /** Adress of covid case */
+    adress String
+}
+
+entity VaccinationInfo {
+	/** UUID of vaccinated person  */
+	uuid UUID required unique,
+    /** Name of case */
+    name String required,
+    /** Date of birthday of vaccinated person */
+	birthday LocalDate,
+    /** Identity carte number of vaccinated person */
+    identityCardNumber String,
+	/** number of vaccination of vaccinated person */
+	vaccinationNumber EnumVaccinationNumber required,
+	/** Date of first vaccination */
+	firstVaccinationDate ZonedDateTime required,
+    /** Date of second vaccination*/
+	secondVaccinationDate ZonedDateTime,
+    /** Country of vaccinated person */
+	country EnumCountry required,
+    /** Adress of vaccinated person */
+    adress String
+}
+
+entity CasesStatistics { 
+	/** UUID du mobile stats */
+	uuid UUID required unique,
+	/** Total Number Cases  */
+    totalCasesNumber Double,
+    /** duration by bike  */
+    country EnumCountry required,
+    /** Date/heure */
+	date LocalDate required,
+	/** année  */
+	year Integer, 
+	/** mois  */
+	month Integer,
+}
+
+// Set pagination options
+paginate * with pagination
+
+filter all
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+

@@ -1,0 +1,50 @@
+{
+  "name": "CasesStatistics",
+  "fields": [
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID",
+      "javadoc": "UUID du mobile stats",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "totalCasesNumber",
+      "fieldType": "Double",
+      "javadoc": "Total Number Cases"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "EnumCountry",
+      "javadoc": "duration by bike",
+      "fieldValues": "TUNISIA,ALGERIA,EGYPT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "javadoc": "Date/heure",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer",
+      "javadoc": "année"
+    },
+    {
+      "fieldName": "month",
+      "fieldType": "Integer",
+      "javadoc": "mois"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "cases_statistics",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["CovidTracker"],
+  "changelogDate": "20220120184001"
+}
